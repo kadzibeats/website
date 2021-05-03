@@ -1,0 +1,70 @@
+@use "sass:map";
+
+// Colors
+$background: #161616;
+$dark-gray: #0d0d0d;
+$light-gray: #fdfdfd;
+$blue: #4281ff;
+
+// Spacing
+$max-width: 1000px;
+
+$spaces: (
+  "1": 8,
+  "2": 16,
+  "3": 24,
+  "4": 32,
+  "5": 48,
+  "6": 64,
+  "7": 128,
+);
+
+$directions: ("top", "bottom", "left", "right");
+
+$spacing-1: #{map.get($spaces, "1")}px;
+$spacing-2: #{map.get($spaces, "2")}px;
+$spacing-3: #{map.get($spaces, "3")}px;
+$spacing-4: #{map.get($spaces, "4")}px;
+$spacing-5: #{map.get($spaces, "5")}px;
+$spacing-6: #{map.get($spaces, "6")}px;
+$spacing-7: #{map.get($spaces, "7")}px;
+
+@each $index, $space in $spaces {
+  .p-#{$index} {
+    padding: #{$space}px;
+  }
+
+  .m-#{$index} {
+    margin: #{$space}px;
+  }
+
+  .p-vertical-#{$index} {
+    padding: #{$space}px 0;
+  }
+
+  .p-horizontal-#{$index} {
+    padding: 0 #{$space}px;
+  }
+
+  .m-vertical-#{$index} {
+    margin: #{$space}px 0;
+  }
+
+  .m-horizontal-#{$index} {
+    margin: 0 #{$space}px;
+  }
+
+  @each $direction in $directions {
+    .m#{str-slice($direction, 0, 1)}-#{$index} {
+      margin-#{$direction}: #{$space}px !important;
+    }
+
+    .p#{str-slice($direction, 0, 1)}-#{$index} {
+      padding-#{$direction}: #{$space}px !important;
+    }
+  }
+}
+
+// Radius
+$radius: 8px;
+$radius-small: 4px;

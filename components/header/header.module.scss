@@ -1,0 +1,30 @@
+@import "../../styles/variables.scss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $dark-gray;
+}
+
+.header__logo {
+}
+
+.header__contact {
+  display: flex;
+  align-items: center;
+
+  .instagram,
+  .email {
+    fill: $light-gray;
+    cursor: pointer;
+  }
+
+  .instagram {
+    height: 25px;
+  }
+
+  .email {
+    height: 20px;
+  }
+}

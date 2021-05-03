@@ -1,0 +1,43 @@
+@import "../../styles//variables.scss";
+
+.slider {
+  width: 100%;
+}
+
+.slider__slide {
+  width: 100% !important;
+  height: 100%;
+}
+
+.slider__image {
+  height: 400px;
+  width: 100%;
+}
+
+.slider__navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    fill: $light-gray;
+    cursor: pointer;
+    transition: transform 0.4s ease-out;
+  }
+}
+
+.slider__navigation__next {
+  &:hover {
+    transform: translateX(4px);
+  }
+}
+
+.slider__navigation__prev {
+  &:hover {
+    transform: translateX(-4px);
+  }
+}
+
+.slider__navigation__disabled {
+  display: none;
+}

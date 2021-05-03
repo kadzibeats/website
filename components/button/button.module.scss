@@ -1,0 +1,17 @@
+@import "../../styles/variables.scss";
+
+.button {
+  cursor: pointer;
+  font-family: "Work Sans", sans-serif;
+  font-size: 20px;
+  border: none;
+  border-radius: $radius-small;
+  background: rgba($color: $blue, $alpha: 0.5);
+  color: $light-gray;
+  width: 100%;
+  transition: background 0.2s ease-out;
+
+  &:hover {
+    background: $blue;
+  }
+}
