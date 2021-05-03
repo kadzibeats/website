@@ -22,6 +22,8 @@ const Slider: FC<SliderProps> = ({ slides }) => {
   return (
     <>
       <Swiper
+        grabCursor={true}
+        spaceBetween={24}
         initialSlide={activeIndex}
         onSlideChange={(swiper) => handleSlideChange(swiper.activeIndex)}
         className={style.slider}

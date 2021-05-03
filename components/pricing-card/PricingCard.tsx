@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import Button from "../button/Button";
 import Select, { SelectProps } from "../select/Select";
 import Toggle from "../toggle/Toggle";
@@ -29,6 +29,8 @@ const PricingCard: FC<PricingCardProps> = ({
   const [selectedOptionIndex, setSelectedOptionIndex] = useState(0);
   const [isToggled, setIsToggled] = useState(false);
   const [price, setPrice] = useState(defaultPrice ? defaultPrice : 0);
+  const [selectRef, setSelectRef] = useState(useRef(null));
+  const priceRef = useRef(null);
 
   useEffect(() => {
     if (!defaultPrice) {
@@ -92,10 +94,52 @@ const PricingCard: FC<PricingCardProps> = ({
     window.open("https://www.instagram.com/kadzi_beats/", "blank");
   };
 
+  const handleToggleClick = () => {
+    if (isToggled) {
+      priceRef.current.classList.add(style["pricing-card__price--disappear"]);
+      setTimeout(() => {
+        priceRef.current.classList.remove(
+          style["pricing-card__price--disappear"]
+        );
+        setIsToggled(false);
+      }, 200);
+      selectRef.current.classList.add(style["pricing-card__select--appear"]);
+      setTimeout(() => {
+        selectRef.current.classList.remove(
+          style["pricing-card__select--disappear"]
+        );
+      }, 250);
+    } else {
+      priceRef.current.classList.add(style["pricing-card__price--disappear"]);
+      setTimeout(() => {
+        priceRef.current.classList.remove(
+          style["pricing-card__price--disappear"]
+        );
+        setIsToggled(true);
+      }, 200);
+      selectRef.current.classList.add(style["pricing-card__select--disappear"]);
+      setTimeout(() => {
+        selectRef.current.classList.remove(
+          style["pricing-card__select--appear"]
+        );
+      }, 250);
+    }
+  };
+
+  const handleSelectChange = (index: number) => {
+    priceRef.current.classList.add(style["pricing-card__price--disappear"]);
+    setTimeout(() => {
+      priceRef.current.classList.remove(
+        style["pricing-card__price--disappear"]
+      );
+      setSelectedOptionIndex(index);
+    }, 200);
+  };
+
   return (
     <div className={`${style["pricing-card"]} p-4`}>
       <div>
-        <p className={`${style["pricing-card__price"]} h1 mb-1`}>
+        <p ref={priceRef} className={`${style["pricing-card__price"]} h1 mb-1`}>
           {price} €
           {perHour && (
             <span className={`${style["pricing-card__per-hour"]} ml-1`}>
@@ -109,17 +153,18 @@ const PricingCard: FC<PricingCardProps> = ({
             <Toggle
               className="mb-4"
               text={options[options.length - 1].text}
-              setIsToggled={setIsToggled}
+              handleToggleClick={handleToggleClick}
               isToggled={isToggled}
             />
           )}
-          {hasSelect && !isToggled && (
+          {hasSelect && (
             <Select
+              setRef={setSelectRef}
               text="Formats :"
-              className="mb-4"
+              className={`${style["pricing-card__select"]}`}
               options={selectOptions}
               selectedOptionIndex={selectedOptionIndex}
-              setSelectedOptionIndex={setSelectedOptionIndex}
+              handleSelectChange={handleSelectChange}
             />
           )}
         </div>

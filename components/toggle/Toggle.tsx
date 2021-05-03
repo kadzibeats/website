@@ -3,20 +3,16 @@ import style from "./toggle.module.scss";
 export interface ToggleProps {
   className?: string;
   isToggled: boolean;
-  setIsToggled: Dispatch<SetStateAction<boolean>>;
   text?: string;
+  handleToggleClick: () => void;
 }
 
 const Toggle: FC<ToggleProps> = ({
   isToggled,
-  setIsToggled,
   text,
   className,
+  handleToggleClick,
 }) => {
-  const handleClick = () => {
-    setIsToggled(!isToggled);
-  };
-
   return (
     <div className={`${style.toggle__wrapper} ${className ? className : ""}`}>
       <div
@@ -24,7 +20,10 @@ const Toggle: FC<ToggleProps> = ({
           isToggled ? style["toggle--toggled"] : ""
         }`}
       >
-        <div onClick={handleClick} className={`${style.toggle__button}`}></div>
+        <div
+          onClick={handleToggleClick}
+          className={`${style.toggle__button}`}
+        ></div>
       </div>
       {text && <p className="ml-2 caption">{text}</p>}
     </div>

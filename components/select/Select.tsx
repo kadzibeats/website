@@ -5,6 +5,8 @@ import {
   SetStateAction,
   useRef,
   MouseEvent,
+  MutableRefObject,
+  useEffect,
 } from "react";
 import style from "./select.module.scss";
 
@@ -13,22 +15,33 @@ export interface SelectProps {
   className?: string;
   options: { name: string; value: number }[];
   selectedOptionIndex: number;
-  setSelectedOptionIndex: Dispatch<SetStateAction<number>>;
+  // setSelectedOptionIndex: Dispatch<SetStateAction<number>>;
+  setRef: Dispatch<SetStateAction<MutableRefObject<any>>>;
+  handleSelectChange: (index: number) => void;
 }
 
 const Select: FC<SelectProps> = ({
   options,
   selectedOptionIndex,
-  setSelectedOptionIndex,
+  handleSelectChange,
   className,
   text,
+  setRef,
 }) => {
+  const ref = useRef(null);
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setSelectedOptionIndex(Number(event.target.value));
+    handleSelectChange(Number(event.target.value));
   };
 
+  useEffect(() => {
+    setRef(ref);
+  });
+
   return (
-    <div className={`${style.select__wrapper} ${className ? className : ""}`}>
+    <div
+      ref={ref}
+      className={`${style.select__wrapper} ${className ? className : ""}`}
+    >
       {text && <p className="caption mr-2">{text}</p>}
       <select
         className={style.select}

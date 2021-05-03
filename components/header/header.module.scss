@@ -7,9 +7,6 @@
   background: $dark-gray;
 }
 
-.header__logo {
-}
-
 .header__contact {
   display: flex;
   align-items: center;
@@ -18,6 +15,11 @@
   .email {
     fill: $light-gray;
     cursor: pointer;
+    transition: transform 0.3s ease-out;
+
+    &:hover {
+      transform: scale(1.15);
+    }
   }
 
   .instagram {
