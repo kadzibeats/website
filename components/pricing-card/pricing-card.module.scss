@@ -37,34 +37,23 @@
 .pricing-card__select {
   height: 39px;
   opacity: 1;
-  overflow: hidden;
   margin-bottom: $spacing-4;
 }
 
 .pricing-card__select--disappear {
-  animation: select-disappear 0.25s linear forwards;
-  opacity: 1;
-  margin-bottom: $spacing-4;
-  height: 39px;
+  animation: select-disappear 0.7s linear forwards;
 }
 
 .pricing-card__select--appear {
-  animation: select-appear 0.25s linear 0.25s forwards;
-  height: 0;
-  opacity: 0;
-  margin-bottom: 0;
-}
-
-@keyframes price-appear {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  animation: select-appear 0.7s linear forwards;
 }
 
 @keyframes select-disappear {
+  0% {
+    opacity: 1;
+    height: 39px;
+    margin-bottom: $spacing-4;
+  }
   50% {
     opacity: 0;
     height: 39px;
@@ -78,14 +67,28 @@
 }
 
 @keyframes select-appear {
-  50% {
-    margin-bottom: $spacing-4;
-    height: 39px;
+  0% {
     opacity: 0;
+    height: 0;
+    margin-bottom: 0;
+  }
+  50% {
+    opacity: 0;
+    height: 39px;
+    margin-bottom: $spacing-4;
   }
   100% {
+    height: 39px;
     opacity: 1;
     margin-bottom: $spacing-4;
-    height: 39px;
+  }
+}
+
+@keyframes price-appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

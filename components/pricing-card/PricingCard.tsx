@@ -29,8 +29,10 @@ const PricingCard: FC<PricingCardProps> = ({
   const [selectedOptionIndex, setSelectedOptionIndex] = useState(0);
   const [isToggled, setIsToggled] = useState(false);
   const [price, setPrice] = useState(defaultPrice ? defaultPrice : 0);
-  const [selectRef, setSelectRef] = useState(useRef(null));
   const priceRef = useRef(null);
+
+  const [selectClass, setSelectClass] = useState(style["pricing-card__select"]);
+  const firstUpdate = useRef(true);
 
   useEffect(() => {
     if (!defaultPrice) {
@@ -40,7 +42,17 @@ const PricingCard: FC<PricingCardProps> = ({
         setPrice(options[selectedOptionIndex].selectValue);
       }
     }
-  });
+    if (!firstUpdate.current) {
+      if (isToggled) {
+        setSelectClass(style["pricing-card__select--disappear"]);
+      } else {
+        setSelectClass(style["pricing-card__select--appear"]);
+      }
+    } else {
+      firstUpdate.current = false;
+      return;
+    }
+  }, [isToggled]);
 
   const Option: FC<{ checked: boolean; text: string; className?: string }> = ({
     text,
@@ -95,35 +107,7 @@ const PricingCard: FC<PricingCardProps> = ({
   };
 
   const handleToggleClick = () => {
-    if (isToggled) {
-      priceRef.current.classList.add(style["pricing-card__price--disappear"]);
-      setTimeout(() => {
-        priceRef.current.classList.remove(
-          style["pricing-card__price--disappear"]
-        );
-        setIsToggled(false);
-      }, 200);
-      selectRef.current.classList.add(style["pricing-card__select--appear"]);
-      setTimeout(() => {
-        selectRef.current.classList.remove(
-          style["pricing-card__select--disappear"]
-        );
-      }, 250);
-    } else {
-      priceRef.current.classList.add(style["pricing-card__price--disappear"]);
-      setTimeout(() => {
-        priceRef.current.classList.remove(
-          style["pricing-card__price--disappear"]
-        );
-        setIsToggled(true);
-      }, 200);
-      selectRef.current.classList.add(style["pricing-card__select--disappear"]);
-      setTimeout(() => {
-        selectRef.current.classList.remove(
-          style["pricing-card__select--appear"]
-        );
-      }, 250);
-    }
+    setIsToggled(!isToggled);
   };
 
   const handleSelectChange = (index: number) => {
@@ -158,14 +142,15 @@ const PricingCard: FC<PricingCardProps> = ({
             />
           )}
           {hasSelect && (
-            <Select
-              setRef={setSelectRef}
-              text="Formats :"
-              className={`${style["pricing-card__select"]}`}
-              options={selectOptions}
-              selectedOptionIndex={selectedOptionIndex}
-              handleSelectChange={handleSelectChange}
-            />
+            <>
+              <Select
+                text="Formats :"
+                className={selectClass}
+                options={selectOptions}
+                selectedOptionIndex={selectedOptionIndex}
+                handleSelectChange={handleSelectChange}
+              />
+            </>
           )}
         </div>
         <div>
