@@ -14,18 +14,18 @@ const Toggle: FC<ToggleProps> = ({
   handleToggleClick,
 }) => {
   return (
-    <div className={`${style.toggle__wrapper} ${className ? className : ""}`}>
+    <div
+      onClick={handleToggleClick}
+      className={`${style.toggle__wrapper} ${className ? className : ""}`}
+    >
       <div
         className={`${style.toggle} ${
           isToggled ? style["toggle--toggled"] : ""
         }`}
       >
-        <div
-          onClick={handleToggleClick}
-          className={`${style.toggle__button}`}
-        ></div>
+        <div className={`${style.toggle__button}`}></div>
       </div>
-      {text && <p className="ml-2 caption">{text}</p>}
+      {text && <p className="ml-3 caption">{text}</p>}
     </div>
   );
 };

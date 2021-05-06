@@ -111,13 +111,8 @@ const PricingCard: FC<PricingCardProps> = ({
   };
 
   const handleSelectChange = (index: number) => {
-    priceRef.current.classList.add(style["pricing-card__price--disappear"]);
-    setTimeout(() => {
-      priceRef.current.classList.remove(
-        style["pricing-card__price--disappear"]
-      );
-      setSelectedOptionIndex(index);
-    }, 200);
+    setSelectedOptionIndex(index);
+    setPrice(options[index].selectValue);
   };
 
   return (

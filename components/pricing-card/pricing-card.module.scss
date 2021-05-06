@@ -10,14 +10,6 @@
 
 .pricing-card__price {
   text-align: center;
-  animation: price-appear 0.2s ease-out;
-  opacity: 1;
-  transition: opacity 0.2s ease-out;
-}
-
-.pricing-card__price--disappear {
-  text-align: center;
-  opacity: 0;
 }
 
 .pricing-card__per-hour {
@@ -81,14 +73,5 @@
     height: 39px;
     opacity: 1;
     margin-bottom: $spacing-4;
-  }
-}
-
-@keyframes price-appear {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }

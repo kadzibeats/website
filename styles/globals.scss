@@ -11,6 +11,10 @@ body {
   color: $light-gray;
 }
 
+body {
+  padding: $spacing-6;
+}
+
 a {
   color: inherit;
   text-decoration: none;

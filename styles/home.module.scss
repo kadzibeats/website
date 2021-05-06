@@ -10,6 +10,10 @@
   max-width: $max-width;
 }
 
+.hero__title {
+  text-align: center;
+}
+
 .infos {
   display: flex;
   max-width: $max-width;
@@ -22,6 +26,23 @@
     }
     &:last-of-type {
       margin-left: $spacing-4;
+    }
+  }
+
+  @media (max-width: 992px) {
+    flex-wrap: wrap;
+
+    & > div {
+      flex-basis: 100%;
+
+      &:first-of-type {
+        margin-right: 0;
+        margin-bottom: $spacing-6;
+      }
+
+      &:last-of-type {
+        margin-left: 0;
+      }
     }
   }
 }
@@ -45,6 +66,23 @@
     }
     &:last-of-type {
       margin-left: $spacing-4;
+    }
+  }
+
+  @media (max-width: 992px) {
+    flex-wrap: wrap;
+
+    & > div {
+      flex-basis: 100%;
+
+      &:first-of-type {
+        margin-right: 0;
+        margin-bottom: $spacing-6;
+      }
+
+      &:last-of-type {
+        margin-left: 0;
+      }
     }
   }
 }

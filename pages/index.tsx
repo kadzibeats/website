@@ -77,7 +77,9 @@ const Home: FC<{}> = () => {
     <>
       <Header />
       <div className={`${style.hero} mb-7`}>
-        <h1 className="mb-2">Studio d'enregistrement à Dijon</h1>
+        <h1 className={`mb-2 ${style.hero__title}`}>
+          Studio d'enregistrement à Dijon
+        </h1>
         <p className="subtitle mb-5">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed faucibus
           non orci sed dictum. Nunc facilisis ac urna id vehicula. Duis eget
