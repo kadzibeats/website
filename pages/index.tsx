@@ -8,16 +8,16 @@ import style from "../styles/home.module.scss";
 const Home: FC<{}> = () => {
   const slides: SliderProps["slides"] = [
     {
-      name: "Cabine",
-      url: "https://picsum.photos/900/900",
-    },
-    {
       name: "Studio",
-      url: "https://picsum.photos/900/900",
+      url: "prods",
     },
     {
-      name: "Materiel",
-      url: "https://picsum.photos/900/900",
+      name: "Cabine",
+      url: "micro",
+    },
+    {
+      name: "Coin artistes",
+      url: "rappeurs",
     },
   ];
 
@@ -75,7 +75,6 @@ const Home: FC<{}> = () => {
 
   return (
     <>
-      <Header />
       <div className={`${style.hero} mb-7`}>
         <h1 className={`mb-2 ${style.hero__title}`}>
           Studio d'enregistrement à Dijon

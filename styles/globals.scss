@@ -1,3 +1,4 @@
+@use "sass:map";
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@500;700&display=swap");
 @import "./variables.scss";
 @import "./typography.scss";
@@ -9,10 +10,6 @@ body {
   margin: 0;
   background: $background;
   color: $light-gray;
-}
-
-body {
-  padding: $spacing-6;
 }
 
 a {
@@ -29,4 +26,12 @@ p {
   font-size: 20px;
   font-weight: 500;
   line-height: 26px;
+}
+
+.layout {
+  padding: #{map.get($spaces, "6") + 74}px $spacing-6 $spacing-6 $spacing-6;
+
+  @media (max-width: 688px) {
+    padding: #{map.get($spaces, "6") + 74}px $spacing-4 $spacing-4 $spacing-4;
+  }
 }

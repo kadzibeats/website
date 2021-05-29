@@ -5,6 +5,10 @@ h1,
   font-weight: 700;
   line-height: normal;
   margin: 0;
+
+  @media (max-width: 688px) {
+    font-size: 39px;
+  }
 }
 
 h2,
