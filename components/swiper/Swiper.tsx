@@ -35,7 +35,16 @@ const Slider: FC<SliderProps> = ({ slides }) => {
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.name} className={style.slider__slide}>
-            <img className={style.slider__image} src={slide.url} />
+            <picture>
+              <source
+                srcSet={`/images/${slide.url}.jpg 1x, /images/@2x-${slide.url}.jpg 2x`}
+              />
+              <img
+                className={style.slider__image}
+                alt={slide.url}
+                src={slide.url}
+              />
+            </picture>
           </SwiperSlide>
         ))}
         <div className={`${style.slider__navigation} mt-4`}>

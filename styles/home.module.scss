@@ -1,11 +1,12 @@
 @import "./variables.scss";
 
 .hero {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 238px);
   margin: auto;
   max-width: $max-width;
 
@@ -20,10 +21,39 @@
   text-align: center;
 }
 
+.hero__scroll-indicator {
+  position: absolute;
+  bottom: -12px;
+}
+
+.hero__logo {
+  margin-top: 60px;
+  width: 300px;
+  opacity: 0;
+  animation: fadeIn 0.2s ease-out 0.5s forwards;
+}
+
+.hero__logo-kadzi {
+  transform: translateX(20px);
+  animation: fadeIn 0.5s ease-out 0.8s forwards;
+  animation: leftSlide 1s ease-out 0.4s forwards;
+}
+
+.hero__logo-beats {
+  transform: translateX(20px);
+  animation: fadeIn 0.5s ease-out 0.9s forwards;
+  animation: leftSlide 1s ease-out 0.5s forwards;
+}
+
+.hero__logo-piano {
+  animation: fadeIn 1.5s ease-out forwards;
+}
+
 .infos {
   display: flex;
   max-width: $max-width;
   margin: auto;
+  padding-top: 128px;
   & > div {
     flex-basis: 50%;
 
@@ -90,5 +120,23 @@
         margin-left: 0;
       }
     }
+  }
+}
+
+@keyframes leftSlide {
+  from {
+    transform: translateX(20px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

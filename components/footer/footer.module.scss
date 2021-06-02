@@ -2,8 +2,18 @@
 
 .footer {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 100px;
   background: $dark-gray;
+  padding: 24px;
+}
+
+.studio99 {
+  font-size: 16px;
+  text-align: end;
+
+  a {
+    font-weight: bold;
+  }
 }
