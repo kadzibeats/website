@@ -185,13 +185,6 @@ const Home: FC<{}> = () => {
             <path fill="white" d="M233.5,1.4h2.1v29.3h-2.1V1.4z" />
           </g>
         </svg>
-        {/* <p className="subtitle mb-5">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed faucibus
-          non orci sed dictum. Nunc facilisis ac urna id vehicula. Duis eget
-          consequat urna.
-        </p>
-        <img src="/images/voice.png" />
-        <ScrollIndicator className={style["hero__scroll-indicator"]} /> */}
       </div>
       <div className={`${style.infos} mb-7`}>
         <div>
