@@ -6,6 +6,8 @@ import PricingCard, {
 import ScrollIndicator from "../components/scroll-indicator/ScrollIndicator";
 import Slider, { SliderProps } from "../components/swiper/Swiper";
 import style from "../styles/home.module.scss";
+import Head from "next/head";
+
 const Home: FC<{}> = () => {
   const slides: SliderProps["slides"] = [
     {
@@ -76,6 +78,14 @@ const Home: FC<{}> = () => {
 
   return (
     <>
+      <Head>
+        <title>Studio d'enregistrement à Dijon - Kadzi | Studio</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="description"
+          content="Kadzi Studio dispose de tout le materiel nécessaire pour un rendu de qualité paré pour la distribution sur les plateformes de streaming."
+        ></meta>
+      </Head>
       <div className={`${style.hero} mb-7`}>
         <h1 className={`mb-2 ${style.hero__title}`}>
           Studio d'enregistrement à Dijon
