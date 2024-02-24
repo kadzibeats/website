@@ -37,9 +37,9 @@ const PricingCard: FC<PricingCardProps> = ({
   useEffect(() => {
     if (!defaultPrice) {
       if (isToggled) {
-        setPrice(options[options.length - 1].selectValue);
+        setPrice(options[options.length - 1].selectValue ?? 0);
       } else {
-        setPrice(options[selectedOptionIndex].selectValue);
+        setPrice(options[selectedOptionIndex].selectValue ?? 0);
       }
     }
     if (!firstUpdate.current) {
@@ -52,7 +52,7 @@ const PricingCard: FC<PricingCardProps> = ({
       firstUpdate.current = false;
       return;
     }
-  }, [isToggled]);
+  }, [defaultPrice, isToggled, options, selectedOptionIndex]);
 
   const Option: FC<{ checked: boolean; text: string; className?: string }> = ({
     text,
@@ -89,18 +89,17 @@ const PricingCard: FC<PricingCardProps> = ({
     );
   };
 
-  const selectOptions: SelectProps["options"] = options.reduce(
-    (acc, option) => {
-      if (option.selectText) {
-        acc.push({
-          name: option.selectText,
-          value: option.selectValue,
-        });
-      }
-      return acc;
-    },
-    []
-  );
+  const selectOptions: SelectProps["options"] = options.reduce<
+    SelectProps["options"]
+  >((acc, option) => {
+    if (option.selectText && option.selectValue) {
+      acc.push({
+        name: option.selectText,
+        value: option.selectValue,
+      });
+    }
+    return acc;
+  }, []);
 
   const handleClick = () => {
     window.open("https://www.instagram.com/kadzi_beats/", "blank");
@@ -112,7 +111,7 @@ const PricingCard: FC<PricingCardProps> = ({
 
   const handleSelectChange = (index: number) => {
     setSelectedOptionIndex(index);
-    setPrice(options[index].selectValue);
+    setPrice(options[index].selectValue ?? 0);
   };
 
   return (

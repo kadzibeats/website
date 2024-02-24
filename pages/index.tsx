@@ -1,9 +1,7 @@
 import { FC } from "react";
-import Header from "../components/header/Header";
 import PricingCard, {
   PricingCardProps,
 } from "../components/pricing-card/PricingCard";
-import ScrollIndicator from "../components/scroll-indicator/ScrollIndicator";
 import Slider, { SliderProps } from "../components/swiper/Swiper";
 import style from "../styles/home.module.scss";
 import Head from "next/head";
@@ -21,21 +19,6 @@ const Home: FC<{}> = () => {
     {
       name: "Coin artistes",
       url: "rappeurs",
-    },
-  ];
-
-  const prices = [
-    {
-      name: "mp3",
-      price: 15,
-    },
-    {
-      name: "wav",
-      price: 25,
-    },
-    {
-      name: "multi-piste",
-      price: 35,
     },
   ];
 
@@ -79,7 +62,7 @@ const Home: FC<{}> = () => {
   return (
     <>
       <Head>
-        <title>Studio d'enregistrement à Dijon - Kadzi | Studio</title>
+        <title>Studio d&apos;enregistrement à Dijon - Kadzi | Studio</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="description"
@@ -88,7 +71,7 @@ const Home: FC<{}> = () => {
       </Head>
       <div className={`${style.hero} mb-7`}>
         <h1 className={`mb-2 ${style.hero__title}`}>
-          Studio d'enregistrement à Dijon
+          Studio d&apos;enregistrement à Dijon
         </h1>
         <svg
           className={style.hero__logo}

@@ -1,7 +1,8 @@
 import { FC, useState } from "react";
-import Swipercore, { Navigation } from "swiper";
+import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import style from "./swiper.module.scss";
+import "swiper/scss/navigation";
 
 export interface SliderProps {
   slides: {
@@ -17,11 +18,10 @@ const Slider: FC<SliderProps> = ({ slides }) => {
     setActiveIndex(index);
   };
 
-  Swipercore.use([Navigation]);
-
   return (
     <>
       <Swiper
+        modules={[Navigation]}
         grabCursor={true}
         spaceBetween={24}
         initialSlide={activeIndex}
