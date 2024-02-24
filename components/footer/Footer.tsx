@@ -5,15 +5,12 @@ import Link from "next/link";
 const Footer: FC<{}> = () => {
   return (
     <div className={style.footer}>
-      <Link href="/mentions-legales">
-        <a>Mentions Legales</a>
-      </Link>
+      <Link href="/mentions-legales">Mentions Legales</Link>
       <p className={style.studio99}>
         Made with [love] by{" "}
-        <Link href="https://instagram.com/wearestudio99">
-          <a target="blank">wearestudio99</a>
-        </Link>{" "}
-        ©
+        <Link target="_blank" href="https://instagram.com/wearestudio99">
+          WeAreStudio99
+        </Link>
       </p>
     </div>
   );
